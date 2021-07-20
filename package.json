@@ -6,9 +6,12 @@
   },
   "scripts": {
     "install": "cd client && npm install && cd ..",
-    "build": "cd client && npm run build && cd ..",
-    "deploy": "cp -a client/build/. public/",
+    "build": "cd client && npm run generate && cd ..",
+    "deploy": "cp -a client/dist/. public/",
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'",
     "lint": "./client/node_modules/.bin/eslint --ext .js,.jsx './client/src'"
+  },
+  "devDependencies": {
+    "@nuxtjs/proxy": "^2.1.0"
   }
 }
