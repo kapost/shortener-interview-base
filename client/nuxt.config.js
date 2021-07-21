@@ -9,11 +9,17 @@ export default {
   ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: dev ? 'server' : 'static',
+
+  server: {
+    port: 3003
+  },
 
   generate: {
     subFolders: false,
   },
+
+  components: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -63,11 +69,8 @@ export default {
   ].filter(x => x),
 
   proxy: {
-    '/short_links': {
+    '/*': {
       target: `http://localhost:${API_PORT}`,
-    },
-    '/access_events': {
-      target: `http://localhost:${API_PORT}/access_events`,
     },
     '/assets': {
       target: `http://localhost:${API_PORT}`,
