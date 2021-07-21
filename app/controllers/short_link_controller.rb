@@ -22,6 +22,6 @@ class ShortLinkController < ApplicationController
   end
 
   def json_for(link)
-    { long_url: link.long_url, short_url: short_link_url(stub: link.stub) }
+    { long_url: link.long_url, stub: link.stub, short_url: short_link_url(stub: link.stub) }
   end
 end
